@@ -195,8 +195,11 @@ export default function Dashboard() {
     
     accounts.forEach(account => {
       // Use bankId as key if bank object doesn't exist
-      const bankKey = account.bank ? account.bank.id : `unknown-${account.bankId}`;
-      const bankInfo = account.bank || { id: account.bankId, name: bankNames[account.bankId] || 'Unknown Bank' };
+      const bankKey = account.bank ? account.bank.id : `unknown-${account.bankId || '0'}`;
+      const bankInfo = account.bank || { 
+        id: account.bankId, 
+        name: bankNames[account.bankId as number] || 'Unknown Bank' 
+      };
       
       if (!bankMap[bankKey]) {
         bankMap[bankKey] = {
