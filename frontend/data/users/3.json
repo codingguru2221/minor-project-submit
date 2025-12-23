@@ -1,0 +1,35 @@
+{
+  "accounts": [
+    {
+      "id": 5,
+      "userId": 3,
+      "bankId": 3,
+      "accountNumber": "PNB000789456123",
+      "type": "savings",
+      "balance": "22000.8",
+      "isLinked": true,
+      "createdAt": "2023-01-19T16:30:00.000Z"
+    },
+    {
+      "id": 6,
+      "userId": 3,
+      "bankId": 8,
+      "accountNumber": "AXIS000654321789",
+      "type": "savings",
+      "balance": "19500.6",
+      "isLinked": true,
+      "createdAt": "2023-01-20T12:45:00.000Z"
+    }
+  ],
+  "transactions": [],
+  "savingGoals": [
+    {
+      "id": 3,
+      "userId": 3,
+      "targetAmount": 200000,
+      "currentAmount": 75000,
+      "editable": true
+    }
+  ],
+  "loans": []
+}

@@ -1,0 +1,27 @@
+{
+  "accounts": [
+    {
+      "id": 9,
+      "userId": 5,
+      "bankId": 9,
+      "accountNumber": "BOI000369147258",
+      "type": "savings",
+      "balance": "21000.4",
+      "isLinked": true,
+      "createdAt": "2023-01-23T13:45:00.000Z"
+    },
+    {
+      "id": 10,
+      "userId": 5,
+      "bankId": 1,
+      "accountNumber": "SBI000741852963",
+      "type": "savings",
+      "balance": "18500.7",
+      "isLinked": true,
+      "createdAt": "2023-01-24T15:30:00.000Z"
+    }
+  ],
+  "transactions": [],
+  "savingGoals": [],
+  "loans": []
+}

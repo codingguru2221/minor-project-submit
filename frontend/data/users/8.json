@@ -1,0 +1,36 @@
+{
+  "accounts": [
+    {
+      "id": 15,
+      "userId": 8,
+      "bankId": 1,
+      "accountNumber": "SBI000753951456",
+      "type": "savings",
+      "balance": "22500.9",
+      "isLinked": true,
+      "createdAt": "2023-01-29T16:00:00.000Z"
+    },
+    {
+      "id": 16,
+      "userId": 8,
+      "bankId": 2,
+      "accountNumber": "BOB000951753654",
+      "type": "savings",
+      "balance": "17500.25",
+      "isLinked": true,
+      "createdAt": "2023-01-30T11:30:00.000Z"
+    }
+  ],
+  "transactions": [],
+  "savingGoals": [],
+  "loans": [
+    {
+      "id": 3,
+      "userId": 8,
+      "loanType": "Personal Loan",
+      "totalAmount": 300000,
+      "emiAmount": 10000,
+      "remainingAmount": 180000
+    }
+  ]
+}

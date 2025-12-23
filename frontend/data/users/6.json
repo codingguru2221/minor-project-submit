@@ -1,0 +1,36 @@
+{
+  "accounts": [
+    {
+      "id": 11,
+      "userId": 6,
+      "bankId": 6,
+      "accountNumber": "UNION000852963741",
+      "type": "savings",
+      "balance": "23500.2",
+      "isLinked": true,
+      "createdAt": "2023-01-25T10:00:00.000Z"
+    },
+    {
+      "id": 12,
+      "userId": 6,
+      "bankId": 4,
+      "accountNumber": "RBI000963741852",
+      "type": "savings",
+      "balance": "35000",
+      "isLinked": true,
+      "createdAt": "2023-01-26T14:15:00.000Z"
+    }
+  ],
+  "transactions": [],
+  "savingGoals": [],
+  "loans": [
+    {
+      "id": 2,
+      "userId": 6,
+      "loanType": "Car Loan",
+      "totalAmount": 800000,
+      "emiAmount": 15000,
+      "remainingAmount": 650000
+    }
+  ]
+}

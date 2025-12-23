@@ -1,0 +1,126 @@
+{
+  "accounts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "bankId": 1,
+      "accountNumber": "SBI000123456789",
+      "type": "savings",
+      "balance": "15000.5",
+      "isLinked": true,
+      "createdAt": "2023-01-15T10:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "bankId": 5,
+      "accountNumber": "HDFC000987654321",
+      "type": "savings",
+      "balance": "25000.75",
+      "isLinked": true,
+      "createdAt": "2023-01-16T11:45:00.000Z"
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "accountId": 1,
+      "amount": "1500",
+      "type": "debit",
+      "category": "Food",
+      "description": "Grocery shopping at Big Bazaar",
+      "date": "2023-10-01T10:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "accountId": 1,
+      "amount": "5000",
+      "type": "credit",
+      "category": "Transfer",
+      "description": "Salary credited",
+      "date": "2023-10-02T14:15:00.000Z"
+    },
+    {
+      "id": 3,
+      "accountId": 1,
+      "amount": "800",
+      "type": "debit",
+      "category": "Travel",
+      "description": "Uber ride to office",
+      "date": "2023-10-03T09:45:00.000Z"
+    },
+    {
+      "id": 4,
+      "accountId": 1,
+      "amount": "250",
+      "type": "debit",
+      "category": "Food",
+      "description": "Lunch at restaurant",
+      "date": "2023-10-04T13:20:00.000Z"
+    },
+    {
+      "id": 5,
+      "accountId": 1,
+      "amount": "1200",
+      "type": "debit",
+      "category": "Shopping",
+      "description": "Clothing purchase",
+      "date": "2023-10-05T16:30:00.000Z"
+    },
+    {
+      "id": 6,
+      "accountId": 2,
+      "amount": "3000",
+      "type": "debit",
+      "category": "Bills",
+      "description": "Electricity bill payment",
+      "date": "2023-10-06T11:15:00.000Z"
+    },
+    {
+      "id": 7,
+      "accountId": 2,
+      "amount": "10000",
+      "type": "credit",
+      "category": "Transfer",
+      "description": "Fixed deposit maturity",
+      "date": "2023-10-07T10:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "accountId": 2,
+      "amount": "750",
+      "type": "debit",
+      "category": "Entertainment",
+      "description": "Movie tickets",
+      "date": "2023-10-08T19:30:00.000Z"
+    },
+    {
+      "id": 9,
+      "accountId": 2,
+      "amount": "2000",
+      "type": "debit",
+      "category": "Travel",
+      "description": "Flight booking",
+      "date": "2023-10-09T08:45:00.000Z"
+    },
+    {
+      "id": 10,
+      "accountId": 2,
+      "amount": "450",
+      "type": "debit",
+      "category": "Food",
+      "description": "Dinner at hotel",
+      "date": "2023-10-10T12:30:00.000Z"
+    }
+  ],
+  "savingGoals": [
+    {
+      "id": 1,
+      "userId": 1,
+      "targetAmount": 100000,
+      "currentAmount": 25000,
+      "editable": true
+    }
+  ],
+  "loans": []
+}

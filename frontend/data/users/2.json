@@ -1,0 +1,35 @@
+{
+  "accounts": [
+    {
+      "id": 3,
+      "userId": 2,
+      "bankId": 2,
+      "accountNumber": "BOB000456789123",
+      "type": "savings",
+      "balance": "18000.25",
+      "isLinked": true,
+      "createdAt": "2023-01-17T09:15:00.000Z"
+    },
+    {
+      "id": 4,
+      "userId": 2,
+      "bankId": 7,
+      "accountNumber": "ICICI000321654987",
+      "type": "savings",
+      "balance": "32000",
+      "isLinked": true,
+      "createdAt": "2023-01-18T14:20:00.000Z"
+    }
+  ],
+  "transactions": [],
+  "savingGoals": [
+    {
+      "id": 2,
+      "userId": 2,
+      "targetAmount": 50000,
+      "currentAmount": 15000,
+      "editable": true
+    }
+  ],
+  "loans": []
+}

@@ -1,0 +1,27 @@
+{
+  "accounts": [
+    {
+      "id": 13,
+      "userId": 7,
+      "bankId": 7,
+      "accountNumber": "ICICI000159357456",
+      "type": "savings",
+      "balance": "28000.6",
+      "isLinked": true,
+      "createdAt": "2023-01-27T12:30:00.000Z"
+    },
+    {
+      "id": 14,
+      "userId": 7,
+      "bankId": 8,
+      "accountNumber": "AXIS000357159258",
+      "type": "savings",
+      "balance": "19500.8",
+      "isLinked": true,
+      "createdAt": "2023-01-28T09:45:00.000Z"
+    }
+  ],
+  "transactions": [],
+  "savingGoals": [],
+  "loans": []
+}

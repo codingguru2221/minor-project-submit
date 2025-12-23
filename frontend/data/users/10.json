@@ -1,0 +1,27 @@
+{
+  "accounts": [
+    {
+      "id": 19,
+      "userId": 10,
+      "bankId": 10,
+      "accountNumber": "YES000753159852",
+      "type": "savings",
+      "balance": "20500.3",
+      "isLinked": true,
+      "createdAt": "2023-02-02T10:20:00.000Z"
+    },
+    {
+      "id": 20,
+      "userId": 10,
+      "bankId": 6,
+      "accountNumber": "UNION000951357456",
+      "type": "savings",
+      "balance": "18500.6",
+      "isLinked": true,
+      "createdAt": "2023-02-03T14:30:00.000Z"
+    }
+  ],
+  "transactions": [],
+  "savingGoals": [],
+  "loans": []
+}

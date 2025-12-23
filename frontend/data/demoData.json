@@ -1,0 +1,589 @@
+{
+  "banks": [
+    {
+      "bank_id": 1,
+      "bank_name": "SBI",
+      "ifsc_code": "SBIN0002499",
+      "created_at": "2023-01-01T00:00:00Z"
+    },
+    {
+      "bank_id": 2,
+      "bank_name": "Bank of Baroda",
+      "ifsc_code": "BARB0VISNAG",
+      "created_at": "2023-01-01T00:00:00Z"
+    },
+    {
+      "bank_id": 3,
+      "bank_name": "Punjab National Bank",
+      "ifsc_code": "PUNB0195700",
+      "created_at": "2023-01-01T00:00:00Z"
+    },
+    {
+      "bank_id": 4,
+      "bank_name": "RBI",
+      "ifsc_code": "RBIS0RBIRAJ",
+      "created_at": "2023-01-01T00:00:00Z"
+    },
+    {
+      "bank_id": 5,
+      "bank_name": "HDFC Bank",
+      "ifsc_code": "HDFC0000123",
+      "created_at": "2023-01-01T00:00:00Z"
+    },
+    {
+      "bank_id": 6,
+      "bank_name": "Union Bank",
+      "ifsc_code": "UBIN055AUCB",
+      "created_at": "2023-01-01T00:00:00Z"
+    },
+    {
+      "bank_id": 7,
+      "bank_name": "ICICI Bank",
+      "ifsc_code": "ICIC0000001",
+      "created_at": "2023-01-01T00:00:00Z"
+    },
+    {
+      "bank_id": 8,
+      "bank_name": "Axis Bank",
+      "ifsc_code": "UTIB0000001",
+      "created_at": "2023-01-01T00:00:00Z"
+    },
+    {
+      "bank_id": 9,
+      "bank_name": "Bank of India",
+      "ifsc_code": "BKID0005067",
+      "created_at": "2023-01-01T00:00:00Z"
+    },
+    {
+      "bank_id": 10,
+      "bank_name": "Yes Bank",
+      "ifsc_code": "YESB0000001",
+      "created_at": "2023-01-01T00:00:00Z"
+    }
+  ],
+  "users": [
+    {
+      "user_id": 1,
+      "full_name": "veerendra vishwakarma",
+      "mobile_number": "9876543210",
+      "email": "veerendra@example.com",
+      "created_at": "2023-01-15T10:30:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 2,
+      "full_name": "kajal manjhi",
+      "mobile_number": "9876543211",
+      "email": "kajal@example.com",
+      "created_at": "2023-01-16T11:45:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 3,
+      "full_name": "archana kushwaha",
+      "mobile_number": "9876543212",
+      "email": "archana@example.com",
+      "created_at": "2023-01-17T09:15:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 4,
+      "full_name": "palak sahu",
+      "mobile_number": "9876543213",
+      "email": "palak@example.com",
+      "created_at": "2023-01-18T14:20:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 5,
+      "full_name": "rinki baghel",
+      "mobile_number": "9876543214",
+      "email": "rinki@example.com",
+      "created_at": "2023-01-19T16:30:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 6,
+      "full_name": "vishal vishwakarma",
+      "mobile_number": "9876543215",
+      "email": "vishal@example.com",
+      "created_at": "2023-01-20T12:45:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 7,
+      "full_name": "nikhil manjhi",
+      "mobile_number": "9876543216",
+      "email": "nikhil@example.com",
+      "created_at": "2023-01-21T08:30:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 8,
+      "full_name": "amit sharma",
+      "mobile_number": "9876543217",
+      "email": "amit@example.com",
+      "created_at": "2023-01-22T11:15:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 9,
+      "full_name": "priya patel",
+      "mobile_number": "9876543218",
+      "email": "priya@example.com",
+      "created_at": "2023-01-23T13:45:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 10,
+      "full_name": "rahul singh",
+      "mobile_number": "9876543219",
+      "email": "rahul@example.com",
+      "created_at": "2023-01-24T15:30:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 11,
+      "full_name": "sneha gupta",
+      "mobile_number": "9876543220",
+      "email": "sneha@example.com",
+      "created_at": "2023-01-25T10:00:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 12,
+      "full_name": "rohit mehra",
+      "mobile_number": "9876543221",
+      "email": "rohit@example.com",
+      "created_at": "2023-01-26T14:15:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 13,
+      "full_name": "anita desai",
+      "mobile_number": "9876543222",
+      "email": "anita@example.com",
+      "created_at": "2023-01-27T12:30:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 14,
+      "full_name": "sumit kumar",
+      "mobile_number": "9876543223",
+      "email": "sumit@example.com",
+      "created_at": "2023-01-28T09:45:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 15,
+      "full_name": "poonam verma",
+      "mobile_number": "9876543224",
+      "email": "poonam@example.com",
+      "created_at": "2023-01-29T16:00:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 16,
+      "full_name": "akash jain",
+      "mobile_number": "9876543225",
+      "email": "akash@example.com",
+      "created_at": "2023-01-30T11:30:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 17,
+      "full_name": "divya rao",
+      "mobile_number": "9876543226",
+      "email": "divya@example.com",
+      "created_at": "2023-01-31T13:15:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 18,
+      "full_name": "vikas malhotra",
+      "mobile_number": "9876543227",
+      "email": "vikas@example.com",
+      "created_at": "2023-02-01T15:45:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 19,
+      "full_name": "nidhi sharma",
+      "mobile_number": "9876543228",
+      "email": "nidhi@example.com",
+      "created_at": "2023-02-02T10:20:00Z",
+      "password": "password123"
+    },
+    {
+      "user_id": 20,
+      "full_name": "arjun patel",
+      "mobile_number": "9876543229",
+      "email": "arjun@example.com",
+      "created_at": "2023-02-03T14:30:00Z",
+      "password": "password123"
+    }
+  ],
+  "accounts": [
+    {
+      "account_id": 1,
+      "user_id": 1,
+      "bank_id": 1,
+      "account_number": "SBI000123456789",
+      "current_balance": 15000.50,
+      "created_at": "2023-01-15T10:30:00Z"
+    },
+    {
+      "account_id": 2,
+      "user_id": 1,
+      "bank_id": 5,
+      "account_number": "HDFC000987654321",
+      "current_balance": 25000.75,
+      "created_at": "2023-01-16T11:45:00Z"
+    },
+    {
+      "account_id": 3,
+      "user_id": 2,
+      "bank_id": 2,
+      "account_number": "BOB000456789123",
+      "current_balance": 18000.25,
+      "created_at": "2023-01-17T09:15:00Z"
+    },
+    {
+      "account_id": 4,
+      "user_id": 2,
+      "bank_id": 7,
+      "account_number": "ICICI000321654987",
+      "current_balance": 32000.00,
+      "created_at": "2023-01-18T14:20:00Z"
+    },
+    {
+      "account_id": 5,
+      "user_id": 3,
+      "bank_id": 3,
+      "account_number": "PNB000789456123",
+      "current_balance": 22000.80,
+      "created_at": "2023-01-19T16:30:00Z"
+    },
+    {
+      "account_id": 6,
+      "user_id": 3,
+      "bank_id": 8,
+      "account_number": "AXIS000654321789",
+      "current_balance": 19500.60,
+      "created_at": "2023-01-20T12:45:00Z"
+    },
+    {
+      "account_id": 7,
+      "user_id": 4,
+      "bank_id": 5,
+      "account_number": "HDFC000147258369",
+      "current_balance": 27500.90,
+      "created_at": "2023-01-21T08:30:00Z"
+    },
+    {
+      "account_id": 8,
+      "user_id": 4,
+      "bank_id": 10,
+      "account_number": "YES000258369147",
+      "current_balance": 16500.30,
+      "created_at": "2023-01-22T11:15:00Z"
+    },
+    {
+      "account_id": 9,
+      "user_id": 5,
+      "bank_id": 9,
+      "account_number": "BOI000369147258",
+      "current_balance": 21000.40,
+      "created_at": "2023-01-23T13:45:00Z"
+    },
+    {
+      "account_id": 10,
+      "user_id": 5,
+      "bank_id": 1,
+      "account_number": "SBI000741852963",
+      "current_balance": 18500.70,
+      "created_at": "2023-01-24T15:30:00Z"
+    },
+    {
+      "account_id": 11,
+      "user_id": 6,
+      "bank_id": 6,
+      "account_number": "UNION000852963741",
+      "current_balance": 23500.20,
+      "created_at": "2023-01-25T10:00:00Z"
+    },
+    {
+      "account_id": 12,
+      "user_id": 6,
+      "bank_id": 4,
+      "account_number": "RBI000963741852",
+      "current_balance": 35000.00,
+      "created_at": "2023-01-26T14:15:00Z"
+    },
+    {
+      "account_id": 13,
+      "user_id": 7,
+      "bank_id": 7,
+      "account_number": "ICICI000159357456",
+      "current_balance": 28000.60,
+      "created_at": "2023-01-27T12:30:00Z"
+    },
+    {
+      "account_id": 14,
+      "user_id": 7,
+      "bank_id": 8,
+      "account_number": "AXIS000357159258",
+      "current_balance": 19500.80,
+      "created_at": "2023-01-28T09:45:00Z"
+    },
+    {
+      "account_id": 15,
+      "user_id": 8,
+      "bank_id": 1,
+      "account_number": "SBI000753951456",
+      "current_balance": 22500.90,
+      "created_at": "2023-01-29T16:00:00Z"
+    },
+    {
+      "account_id": 16,
+      "user_id": 8,
+      "bank_id": 2,
+      "account_number": "BOB000951753654",
+      "current_balance": 17500.25,
+      "created_at": "2023-01-30T11:30:00Z"
+    },
+    {
+      "account_id": 17,
+      "user_id": 9,
+      "bank_id": 3,
+      "account_number": "PNB000159753456",
+      "current_balance": 24500.40,
+      "created_at": "2023-01-31T13:15:00Z"
+    },
+    {
+      "account_id": 18,
+      "user_id": 9,
+      "bank_id": 5,
+      "account_number": "HDFC000357951654",
+      "current_balance": 31000.75,
+      "created_at": "2023-02-01T15:45:00Z"
+    },
+    {
+      "account_id": 19,
+      "user_id": 10,
+      "bank_id": 10,
+      "account_number": "YES000753159852",
+      "current_balance": 20500.30,
+      "created_at": "2023-02-02T10:20:00Z"
+    },
+    {
+      "account_id": 20,
+      "user_id": 10,
+      "bank_id": 6,
+      "account_number": "UNION000951357456",
+      "current_balance": 18500.60,
+      "created_at": "2023-02-03T14:30:00Z"
+    }
+  ],
+  "categories": [
+    {
+      "category_id": 1,
+      "category_name": "Food"
+    },
+    {
+      "category_id": 2,
+      "category_name": "Shopping"
+    },
+    {
+      "category_id": 3,
+      "category_name": "Travel"
+    },
+    {
+      "category_id": 4,
+      "category_name": "Bills"
+    },
+    {
+      "category_id": 5,
+      "category_name": "Transfer"
+    },
+    {
+      "category_id": 6,
+      "category_name": "Entertainment"
+    },
+    {
+      "category_id": 7,
+      "category_name": "Others"
+    }
+  ],
+  "transactions": [
+    {
+      "transaction_id": 1,
+      "account_id": 1,
+      "amount": 1500.00,
+      "transaction_type": "debit",
+      "category_id": 1,
+      "transaction_date": "2023-10-01T10:30:00Z",
+      "description": "Grocery shopping at Big Bazaar"
+    },
+    {
+      "transaction_id": 2,
+      "account_id": 1,
+      "amount": 5000.00,
+      "transaction_type": "credit",
+      "category_id": 5,
+      "transaction_date": "2023-10-02T14:15:00Z",
+      "description": "Salary credited"
+    },
+    {
+      "transaction_id": 3,
+      "account_id": 1,
+      "amount": 800.00,
+      "transaction_type": "debit",
+      "category_id": 3,
+      "transaction_date": "2023-10-03T09:45:00Z",
+      "description": "Uber ride to office"
+    },
+    {
+      "transaction_id": 4,
+      "account_id": 1,
+      "amount": 250.00,
+      "transaction_type": "debit",
+      "category_id": 1,
+      "transaction_date": "2023-10-04T13:20:00Z",
+      "description": "Lunch at restaurant"
+    },
+    {
+      "transaction_id": 5,
+      "account_id": 1,
+      "amount": 1200.00,
+      "transaction_type": "debit",
+      "category_id": 2,
+      "transaction_date": "2023-10-05T16:30:00Z",
+      "description": "Clothing purchase"
+    },
+    {
+      "transaction_id": 6,
+      "account_id": 2,
+      "amount": 3000.00,
+      "transaction_type": "debit",
+      "category_id": 4,
+      "transaction_date": "2023-10-06T11:15:00Z",
+      "description": "Electricity bill payment"
+    },
+    {
+      "transaction_id": 7,
+      "account_id": 2,
+      "amount": 10000.00,
+      "transaction_type": "credit",
+      "category_id": 5,
+      "transaction_date": "2023-10-07T10:00:00Z",
+      "description": "Fixed deposit maturity"
+    },
+    {
+      "transaction_id": 8,
+      "account_id": 2,
+      "amount": 750.00,
+      "transaction_type": "debit",
+      "category_id": 6,
+      "transaction_date": "2023-10-08T19:30:00Z",
+      "description": "Movie tickets"
+    },
+    {
+      "transaction_id": 9,
+      "account_id": 2,
+      "amount": 2000.00,
+      "transaction_type": "debit",
+      "category_id": 3,
+      "transaction_date": "2023-10-09T08:45:00Z",
+      "description": "Flight booking"
+    },
+    {
+      "transaction_id": 10,
+      "account_id": 2,
+      "amount": 450.00,
+      "transaction_type": "debit",
+      "category_id": 1,
+      "transaction_date": "2023-10-10T12:30:00Z",
+      "description": "Dinner at hotel"
+    }
+  ],
+  "saving_goals": [
+    {
+      "goal_id": 1,
+      "user_id": 1,
+      "target_amount": 100000.00,
+      "current_amount": 25000.00,
+      "editable": true
+    },
+    {
+      "goal_id": 2,
+      "user_id": 2,
+      "target_amount": 50000.00,
+      "current_amount": 15000.00,
+      "editable": true
+    },
+    {
+      "goal_id": 3,
+      "user_id": 3,
+      "target_amount": 200000.00,
+      "current_amount": 75000.00,
+      "editable": true
+    }
+  ],
+  "cards": [
+    {
+      "card_id": 1,
+      "account_id": 1,
+      "card_type": "debit",
+      "card_number": "**** **** **** 1234",
+      "expiry_date": "12/25"
+    },
+    {
+      "card_id": 2,
+      "account_id": 1,
+      "card_type": "credit",
+      "card_number": "**** **** **** 5678",
+      "expiry_date": "06/26"
+    },
+    {
+      "card_id": 3,
+      "account_id": 2,
+      "card_type": "debit",
+      "card_number": "**** **** **** 9012",
+      "expiry_date": "03/25"
+    },
+    {
+      "card_id": 4,
+      "account_id": 5,
+      "card_type": "credit",
+      "card_number": "**** **** **** 3456",
+      "expiry_date": "09/26"
+    }
+  ],
+  "loans": [
+    {
+      "loan_id": 1,
+      "user_id": 4,
+      "loan_type": "Home Loan",
+      "total_amount": 5000000.00,
+      "emi_amount": 45000.00,
+      "remaining_amount": 4200000.00
+    },
+    {
+      "loan_id": 2,
+      "user_id": 6,
+      "loan_type": "Car Loan",
+      "total_amount": 800000.00,
+      "emi_amount": 15000.00,
+      "remaining_amount": 650000.00
+    },
+    {
+      "loan_id": 3,
+      "user_id": 8,
+      "loan_type": "Personal Loan",
+      "total_amount": 300000.00,
+      "emi_amount": 10000.00,
+      "remaining_amount": 180000.00
+    }
+  ]
+}

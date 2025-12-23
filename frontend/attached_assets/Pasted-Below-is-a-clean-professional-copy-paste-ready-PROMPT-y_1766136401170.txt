@@ -1,0 +1,234 @@
+Below is a **clean, professional, copy-paste ready PROMPT** you can directly give to **Replit AI** to generate the **FRONTEND ONLY** of your **Personal Expense Tracker** app.
+I’ve structured it clearly, kept logic-level details (no backend), and aligned it with what you described 👇
+
+---
+
+## 🔥 PROMPT FOR REPLIT AI (FRONTEND ONLY)
+
+**Project Title:** Personal Expense Tracker (Frontend Only)
+
+You are a **senior frontend developer and UI/UX designer**.
+Create a **frontend-only Personal Expense Tracker application** with clean UI, modular components, and scalable structure.
+
+---
+
+## 📌 TECH REQUIREMENTS
+
+* Frontend only (NO backend, NO real APIs)
+* Use **React + Vite**
+* Use **dummy/static data** wherever required
+* Use **local state / mock JSON**
+* Clean folder structure
+* Responsive UI (mobile + desktop)
+* Do NOT add authentication backend logic
+
+---
+
+## 🧩 APP STRUCTURE (3 PARTS)
+
+---
+
+## 🔹 PART 1: DEMO BANK & ACCOUNT SETUP (Mock Data)
+
+Create **mock data only**:
+
+* Create **at least 10 demo banks**
+* Randomly assign **3–4 bank accounts to ONE single user**
+* Each bank account should contain:
+
+  * Bank Name
+  * Masked Account Number (****1234)
+  * Account Type (Savings / Current / Loan)
+  * Balance
+  * Dummy Transaction History
+  * Dummy Loan Info (if applicable)
+
+Store this data in:
+
+```
+src/data/banks.js
+```
+
+---
+
+## 🔹 PART 2: SIGNUP FLOW (MULTI-STEP UI)
+
+Create a **multi-step signup flow UI** (no backend):
+
+### Step 1: Personal Information
+
+* Full Name
+* Email (Gmail only validation)
+* Mobile Number (UI only)
+* City / Country
+
+---
+
+### Step 2: Banking Information
+
+* Mobile number (used to fetch linked banks – mock)
+* Show linked demo bank accounts (checkbox selection)
+* Allow user to select which accounts to track
+
+---
+
+### Step 3: Expense Tracker Preferences
+
+* Expense categories selection:
+
+  * Food
+  * Shopping
+  * Rent
+  * Travel
+  * EMI / Loan
+  * Utilities
+* Monthly budget input
+* Currency selection
+
+---
+
+### Step 4: User ID & Security
+
+* Username
+* Password
+* App security UI:
+
+  * Fingerprint (UI toggle only)
+  * App PIN (4-digit input)
+* Show note: *“Only SIM-inserted device can create account”* (UI message only)
+
+---
+
+## 🔹 PART 3: DASHBOARD (MAIN SCREEN)
+
+Create a **Dashboard UI** after signup/login:
+
+---
+
+### 🏠 HOME PAGE FEATURES
+
+#### 🔹 Linked Bank Accounts
+
+* Show number of linked bank accounts
+* Click any account → open secure modal
+
+  * Ask for **Account PIN**
+  * If correct → show data
+  * If wrong → show retry error
+
+---
+
+#### 🔹 Expense Tracker View
+
+* Show expenses based on:
+
+  * Year
+  * Month
+  * Day
+* Use charts/cards:
+
+  * Total expense
+  * Category-wise breakdown
+  * Recent transactions
+* Date & time visible
+
+---
+
+#### 🔹 Search
+
+* Global search bar
+* Search across:
+
+  * Transactions
+  * Bank names
+  * Categories
+
+---
+
+#### 🔹 Loan Section
+
+* Show loan-based bank accounts
+* EMI paid
+* Remaining amount
+* Loan transaction history
+* Total loan expense calculation
+
+---
+
+## 🔐 AUTH PAGES (UI ONLY)
+
+### CREATE ACCOUNT PAGE
+
+* Username
+* Contact number (linked banks)
+* Gmail
+* Encryption UI:
+
+  * Fingerprint (icon + toggle)
+  * PIN setup
+* SIM-based notice (UI text)
+
+---
+
+### LOGIN PAGE
+
+* Username
+* Contact number
+* Simple validation UI
+* Redirect to dashboard
+
+---
+
+## 🎨 UI & UX RULES
+
+* Modern fintech UI
+* Clean cards
+* Icons for banks & categories
+* Dark + Light mode toggle (optional)
+* Reusable components
+* Proper spacing & typography
+
+---
+
+## 📁 FOLDER STRUCTURE SUGGESTION
+
+```
+src/
+ ├─ components/
+ ├─ pages/
+ ├─ data/
+ ├─ layouts/
+ ├─ utils/
+ ├─ styles/
+ ├─ App.jsx
+ └─ main.jsx
+```
+
+---
+
+## ❌ IMPORTANT RULES
+
+* Do NOT add backend
+* Do NOT integrate real bank APIs
+* Use only mock data
+* Focus on UI logic and user flow
+* Code must be readable & scalable
+
+---
+
+### 🎯 OUTPUT EXPECTATION
+
+Generate:
+
+* Full React frontend
+* Dummy data files
+* Clean UI components
+* Ready to run on Replit
+
+---
+
+If you want, next I can:
+
+* Simplify this prompt
+* Convert it for **V0 / Qoder / Cursor AI**
+* Or design **wireframe + component map** for this app 🚀

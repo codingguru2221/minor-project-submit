@@ -1,0 +1,36 @@
+{
+  "accounts": [
+    {
+      "id": 7,
+      "userId": 4,
+      "bankId": 5,
+      "accountNumber": "HDFC000147258369",
+      "type": "savings",
+      "balance": "27500.9",
+      "isLinked": true,
+      "createdAt": "2023-01-21T08:30:00.000Z"
+    },
+    {
+      "id": 8,
+      "userId": 4,
+      "bankId": 10,
+      "accountNumber": "YES000258369147",
+      "type": "savings",
+      "balance": "16500.3",
+      "isLinked": true,
+      "createdAt": "2023-01-22T11:15:00.000Z"
+    }
+  ],
+  "transactions": [],
+  "savingGoals": [],
+  "loans": [
+    {
+      "id": 1,
+      "userId": 4,
+      "loanType": "Home Loan",
+      "totalAmount": 5000000,
+      "emiAmount": 45000,
+      "remainingAmount": 4200000
+    }
+  ]
+}
