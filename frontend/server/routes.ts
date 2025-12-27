@@ -3,6 +3,7 @@ import type { Server } from "http";
 import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
+import { insertCardSchema } from "@shared/schema";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -36,6 +37,30 @@ export async function registerRoutes(
         return res.status(401).json({ message: "Invalid credentials" });
       }
       res.json(user);
+    } catch (err) {
+      res.status(400).json({ message: "Invalid input" });
+    }
+  });
+
+  app.put(api.users.update.path, async (req, res) => {
+    try {
+      const input = api.users.update.input.parse(req.body);
+      const userId = Number(req.params.id);
+      
+      // Find the user to update
+      const existingUser = await storage.getUser(userId);
+      if (!existingUser) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      
+      // In a real app, we'd update the user in the storage
+      // For now, we'll return the user with updated values
+      const updatedUser = {
+        ...existingUser,
+        ...input
+      };
+      
+      res.json(updatedUser);
     } catch (err) {
       res.status(400).json({ message: "Invalid input" });
     }
@@ -97,6 +122,41 @@ export async function registerRoutes(
     if (!userId) return res.json([]); // Return empty if no user specified
     const loans = await storage.getLoans(userId);
     res.json(loans);
+  });
+
+  // === Cards ===
+  app.get(api.cards.list.path, async (req, res) => {
+    const userId = req.query.userId ? Number(req.query.userId) : undefined;
+    if (!userId) return res.json([]); // Return empty if no user specified
+    const cards = await storage.getCards(userId);
+    res.json(cards);
+  });
+
+  app.post(api.cards.create.path, async (req, res) => {
+    try {
+      const input = insertCardSchema.parse(req.body);
+      const card = await storage.createCard(input);
+      res.status(201).json(card);
+    } catch (err) {
+      res.status(400).json({ message: "Invalid input" });
+    }
+  });
+
+  app.delete(api.cards.delete.path, async (req, res) => {
+    const cardId = Number(req.params.id);
+    const success = await storage.deleteCard(cardId);
+    
+    if (success) {
+      res.json({ message: "Card deleted successfully" });
+    } else {
+      res.status(404).json({ message: "Card not found" });
+    }
+  });
+
+  app.get(api.cards.transactions.path, async (req, res) => {
+    const cardId = Number(req.params.id);
+    const transactions = await storage.getCardTransactions(cardId);
+    res.json(transactions);
   });
 
   return httpServer;

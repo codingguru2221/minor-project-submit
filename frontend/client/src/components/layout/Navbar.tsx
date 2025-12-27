@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { LayoutDashboard, CreditCard, Settings, PieChart, LogOut, Wallet } from "lucide-react";
+import { LayoutDashboard, CreditCard, Settings, PieChart, LogOut, Wallet, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {

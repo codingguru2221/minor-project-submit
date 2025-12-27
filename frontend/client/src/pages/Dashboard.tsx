@@ -6,7 +6,8 @@ import { TransactionList } from "@/components/dashboard/TransactionList";
 import { useUser, useAccounts, useTransactions, useSavingGoals, useCards, type Card } from '@/hooks/use-finance';
 import { Input } from "@/components/ui/input";
 import { ButtonCustom } from "@/components/ui/button-custom";
-import { Search, Plus, Bell, Filter, CreditCard, ChevronDown } from "lucide-react";
+import { Search, Plus, Bell, Filter, CreditCard, ChevronDown, User } from "lucide-react";
+import { ProfileDropdown } from "@/components/dashboard/ProfileDropdown";
 import { 
   AreaChart, 
   Area, 
@@ -308,9 +309,11 @@ export default function Dashboard() {
               <ButtonCustom variant="outline" size="icon" className="rounded-xl">
                 <Bell className="w-5 h-5" />
               </ButtonCustom>
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-purple-600 text-white flex items-center justify-center font-bold">
-                {user?.fullName?.[0] || "U"}
-              </div>
+              <ProfileDropdown>
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-purple-600 text-white flex items-center justify-center font-bold cursor-pointer">
+                  {user?.fullName?.[0] || "U"}
+                </div>
+              </ProfileDropdown>
             </div>
           </header>
 

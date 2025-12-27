@@ -1,69 +1,25 @@
 import { z } from "zod";
-// === TYPE DEFINITIONS ===
 
-export interface User {
-  id: number;
-  username: string;
-  password: string; // Will mock auth
-  fullName?: string | null;
-  email?: string | null;
-  mobile?: string | null;
-  city?: string | null;
-  country?: string | null;
-  monthlyBudget?: string | null;
-  currency: string;
-  appPin?: string | null;
-  fingerprintEnabled: boolean;
-  isProfileComplete: boolean;
-  createdAt: Date;
-}
+// Zod schema objects with $inferSelect
+export const users = {
+  $inferSelect: null as unknown as User,
+};
 
-export interface Bank {
-  id: number;
-  name: string;
-  icon?: string | null; // Lucide icon name or similar
-}
+export const banks = {
+  $inferSelect: null as unknown as Bank,
+};
 
-export interface Account {
-  id: number;
-  userId: number;
-  bankId: number;
-  accountNumber: string; // Masked usually
-  type: string; // Savings, Current, Loan
-  balance: string;
-  isLinked: boolean;
-  // Loan specific fields
-  loanAmount?: string | null;
-  loanPaid?: string | null;
-  createdAt: Date;
-}
+export const accounts = {
+  $inferSelect: null as unknown as Account,
+};
 
-export interface Transaction {
-  id: number;
-  accountId: number;
-  amount: string;
-  type: string; // credit, debit
-  category?: string | null; // Food, Shopping, Rent, etc.
-  description?: string | null;
-  date: Date;
-}
+export const transactions = {
+  $inferSelect: null as unknown as Transaction,
+};
 
-export interface SavingGoal {
-  id: number;
-  userId: number;
-  targetAmount: number;
-  currentAmount: number;
-  editable: boolean;
-}
-
-export interface Loan {
-  id: number;
-  userId: number;
-  loanType: string;
-  totalAmount: number;
-  emiAmount: number;
-  remainingAmount: number;
-}
+export const cards = {
+  $inferSelect: null as unknown as Card,
+};
 
 // === BASE SCHEMAS ===
 
@@ -81,12 +37,12 @@ export const insertUserSchema = z.object({
   appPin: z.string().optional(),
   fingerprintEnabled: z.boolean().optional(),
   isProfileComplete: z.boolean().optional()
-}).omit({ id: true, createdAt: true });
+});
 
 export const insertBankSchema = z.object({
   name: z.string(),
   icon: z.string().optional()
-}).omit({ id: true });
+});
 
 export const insertAccountSchema = z.object({
   userId: z.number(),
@@ -97,7 +53,7 @@ export const insertAccountSchema = z.object({
   isLinked: z.boolean().optional(),
   loanAmount: z.string().optional(),
   loanPaid: z.string().optional()
-}).omit({ id: true, createdAt: true });
+});
 
 export const insertTransactionSchema = z.object({
   accountId: z.number(),
@@ -105,7 +61,7 @@ export const insertTransactionSchema = z.object({
   type: z.string(),
   category: z.string().optional(),
   description: z.string().optional()
-}).omit({ id: true, date: true });
+});
 
 // === EXPLICIT API CONTRACT TYPES ===
 
@@ -118,6 +74,7 @@ export type User = {
   mobile?: string | null;
   city?: string | null;
   country?: string | null;
+  profilePicture?: string | null;
   monthlyBudget?: string | null;
   currency: string;
   appPin?: string | null;
@@ -155,20 +112,61 @@ export type Transaction = {
   date: Date;
 };
 
+export type SavingGoal = {
+  id: number;
+  userId: number;
+  targetAmount: number;
+  currentAmount: number;
+  editable: boolean;
+};
+
+export type Loan = {
+  id: number;
+  userId: number;
+  loanType: string;
+  totalAmount: number;
+  emiAmount: number;
+  remainingAmount: number;
+};
+
+export type Card = {
+  id: number;
+  userId: number;
+  contactNumber: string;
+  cardAccountNumber: string;
+  accountType: string;
+  initialBalance: string;
+  createdAt: Date;
+  duePayments?: number;
+};
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type InsertAccount = z.infer<typeof insertAccountSchema>;
 export type InsertTransaction = z.infer<typeof insertTransactionSchema>;
+
+// Card schema
+export const insertCardSchema = z.object({
+  userId: z.number(),
+  contactNumber: z.string(),
+  cardAccountNumber: z.string(),
+  accountType: z.string(),
+  initialBalance: z.string()
+});
+
+export type InsertCard = z.infer<typeof insertCardSchema>;
 
 export type CreateUserRequest = InsertUser;
 export type UpdateUserRequest = Partial<InsertUser>;
 export type CreateAccountRequest = InsertAccount;
 export type CreateTransactionRequest = InsertTransaction;
-
+export type CreateCardRequest = InsertCard;
 // Response types
 export type UserResponse = User;
 export type BankResponse = Bank;
 export type AccountResponse = Account & { bank?: Bank };
 export type TransactionResponse = Transaction;
+
+export type CardResponse = Card;
 
 // For the multi-step signup
 export type SignupStep1Request = Pick<InsertUser, "fullName" | "email" | "mobile" | "city" | "country">;

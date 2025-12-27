@@ -1,6 +1,6 @@
 import { memoryStorage } from "./memoryStorage";
 import {
-  type User, type InsertUser, type Bank, type Account, type InsertAccount, type Transaction, type InsertTransaction, type SavingGoal, type Loan
+  type User, type InsertUser, type Bank, type Account, type InsertAccount, type Transaction, type InsertTransaction, type SavingGoal, type Loan, type Card, type InsertCard
 } from "@shared/schema";
 
 export interface IStorage {
@@ -9,6 +9,7 @@ export interface IStorage {
   getUserByUsername(username: string): Promise<User | undefined>;
   getUserByMobile(mobile: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
+  updateUser(id: number, user: Partial<User>): Promise<User | undefined>;
 
   // Banks
   getBanks(): Promise<Bank[]>;
@@ -28,6 +29,12 @@ export interface IStorage {
 
   // Loans
   getLoans(userId: number): Promise<Loan[]>;
+
+  // Cards
+  getCards(userId: number): Promise<Card[]>;
+  createCard(card: InsertCard): Promise<Card>;
+  deleteCard(id: number): Promise<boolean>;
+  getCardTransactions(cardId: number): Promise<Transaction[]>;
 }
 
 export class MemoryStorageAdapter implements IStorage {
@@ -45,6 +52,10 @@ export class MemoryStorageAdapter implements IStorage {
 
   async createUser(insertUser: InsertUser): Promise<User> {
     return memoryStorage.createUser(insertUser);
+  }
+
+  async updateUser(id: number, user: Partial<User>): Promise<User | undefined> {
+    return memoryStorage.updateUser(id, user);
   }
 
   async getBanks(): Promise<Bank[]> {
@@ -81,6 +92,22 @@ export class MemoryStorageAdapter implements IStorage {
 
   async getLoans(userId: number): Promise<Loan[]> {
     return memoryStorage.getLoans(userId);
+  }
+
+  async getCards(userId: number): Promise<Card[]> {
+    return memoryStorage.getCards(userId);
+  }
+
+  async createCard(card: InsertCard): Promise<Card> {
+    return memoryStorage.createCard(card);
+  }
+
+  async deleteCard(id: number): Promise<boolean> {
+    return memoryStorage.deleteCard(id);
+  }
+
+  async getCardTransactions(cardId: number): Promise<Transaction[]> {
+    return memoryStorage.getCardTransactions(cardId);
   }
 }
 

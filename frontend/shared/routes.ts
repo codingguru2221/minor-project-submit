@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { insertUserSchema, insertAccountSchema, insertTransactionSchema, users, banks, accounts, transactions } from './schema';
+import { insertUserSchema, insertAccountSchema, insertTransactionSchema, insertCardSchema, users, banks, accounts, transactions, cards } from './schema';
 
 // ============================================
 // SHARED ERROR SCHEMAS
@@ -47,6 +47,14 @@ export const api = {
       responses: {
         200: z.custom<typeof users.$inferSelect>(),
         401: z.object({ message: z.string() }),
+      },
+    },
+    update: {
+      method: 'PUT' as const,
+      path: '/api/users/:id',
+      input: insertUserSchema,
+      responses: {
+        200: z.custom<typeof users.$inferSelect>(),
       },
     }
   },
@@ -116,6 +124,39 @@ export const api = {
       },
     },
   },
+  cards: {
+    list: {
+      method: 'GET' as const,
+      path: '/api/cards',
+      input: z.object({ userId: z.coerce.number().optional() }).optional(),
+      responses: {
+        200: z.array(z.custom<typeof cards.$inferSelect>()),
+      },
+    },
+    create: {
+      method: 'POST' as const,
+      path: '/api/cards',
+      input: insertCardSchema,
+      responses: {
+        201: z.custom<typeof cards.$inferSelect>(),
+      },
+    },
+    delete: {
+      method: 'DELETE' as const,
+      path: '/api/cards/:id',
+      responses: {
+        200: z.object({ message: z.string() }),
+      },
+    },
+    transactions: {
+      method: 'GET' as const,
+      path: '/api/cards/:id/transactions',
+      responses: {
+        200: z.array(z.custom<typeof transactions.$inferSelect>()),
+      },
+    },
+  },
+
 };
 
 // ============================================

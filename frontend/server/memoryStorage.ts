@@ -6,6 +6,27 @@ import * as path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
+// Define Card types
+interface Card {
+  id: number;
+  userId: number;
+  contactNumber: string;
+  cardAccountNumber: string;
+  accountType: string;
+  initialBalance: string;
+  createdAt: Date;
+  // Due payments tracking
+  duePayments?: number;
+}
+
+interface InsertCard {
+  userId: number;
+  contactNumber: string;
+  cardAccountNumber: string;
+  accountType: string;
+  initialBalance: string;
+}
+
 // Get the directory name for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -35,6 +56,12 @@ export interface IStorage {
 
   // Loans
   getLoans(userId: number): Promise<Loan[]>;
+
+  // Cards
+  getCards(userId: number): Promise<Card[]>;
+  createCard(card: InsertCard): Promise<Card>;
+  deleteCard(id: number): Promise<boolean>;
+  getCardTransactions(cardId: number): Promise<Transaction[]>;
 }
 
 export class MemoryStorage implements IStorage {
@@ -44,10 +71,12 @@ export class MemoryStorage implements IStorage {
   private transactions: Transaction[] = [];
   private savingGoals: SavingGoal[] = [];
   private loans: Loan[] = [];
+  private cards: Card[] = [];
   private nextUserId = 1;
   private nextBankId = 1;
   private nextAccountId = 1;
   private nextTransactionId = 1;
+  private nextCardId = 1;
 
   constructor() {
     // Load demo data and user data from JSON files
@@ -55,6 +84,8 @@ export class MemoryStorage implements IStorage {
     this.loadUserData();
     // Create user-specific data files if they don't exist
     this.createUserSpecificDataFiles();
+    // Load card data from cardsData.json
+    this.loadCardData();
   }
 
   private loadDemoData() {
@@ -65,7 +96,7 @@ export class MemoryStorage implements IStorage {
         
         // Load banks
         this.banks = demoData.banks;
-        this.nextBankId = Math.max(...this.banks.map(bank => bank.bank_id), 0) + 1;
+        this.nextBankId = Math.max(...this.banks.map(bank => bank.id), 0) + 1;
         
         // Load users
         this.users = demoData.users.map((user: any) => ({
@@ -226,6 +257,45 @@ export class MemoryStorage implements IStorage {
     }
   }
 
+  private loadCardData() {
+    try {
+      const cardDataPath = path.join(__dirname, '..', 'data', 'cardsData.json');
+      if (fs.existsSync(cardDataPath)) {
+        const cardData = JSON.parse(fs.readFileSync(cardDataPath, 'utf8'));
+        
+        if (cardData.cards && Array.isArray(cardData.cards)) {
+          this.cards = cardData.cards.map((card: any) => ({
+            ...card,
+            createdAt: new Date(card.createdAt)
+          }));
+          this.nextCardId = Math.max(...this.cards.map(card => card.id), 0) + 1;
+        }
+      } else {
+        // Create the cardsData.json file with an empty array if it doesn't exist
+        fs.writeFileSync(cardDataPath, JSON.stringify({ cards: [] }, null, 2));
+      }
+    } catch (error) {
+      console.error('Error loading card data:', error);
+      // Initialize with empty array if there's an error
+      this.cards = [];
+    }
+  }
+
+  private saveCardData() {
+    try {
+      const cardDataPath = path.join(__dirname, '..', 'data', 'cardsData.json');
+      const cardData = {
+        cards: this.cards.map(card => ({
+          ...card,
+          createdAt: card.createdAt.toISOString()
+        }))
+      };
+      fs.writeFileSync(cardDataPath, JSON.stringify(cardData, null, 2));
+    } catch (error) {
+      console.error('Error saving card data:', error);
+    }
+  }
+
   private saveUserData() {
     try {
       const userDataPath = path.join(__dirname, '..', 'data', 'userData.json');
@@ -262,6 +332,26 @@ export class MemoryStorage implements IStorage {
 
   async getUserByMobile(mobile: string): Promise<User | undefined> {
     return this.users.find(user => user.mobile === mobile);
+  }
+
+  async updateUser(id: number, updateData: Partial<User>): Promise<User | undefined> {
+    const userIndex = this.users.findIndex(user => user.id === id);
+    
+    if (userIndex === -1) {
+      return undefined;
+    }
+    
+    // Update the user with new data
+    this.users[userIndex] = {
+      ...this.users[userIndex],
+      ...updateData,
+      id: this.users[userIndex].id // Preserve the ID
+    };
+    
+    // Save updated user data to file
+    this.saveUserData();
+    
+    return this.users[userIndex];
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
@@ -524,6 +614,93 @@ export class MemoryStorage implements IStorage {
     } catch (error) {
       console.error(`Error loading loans for user ${userId}:`, error);
     }
+    return [];
+  }
+
+  async getCards(userId: number): Promise<Card[]> {
+    // Filter cards by user ID
+    return this.cards.filter(card => card.userId === userId);
+  }
+
+  async createCard(insertCard: InsertCard): Promise<Card> {
+    const card: Card = {
+      id: this.nextCardId++,
+      ...insertCard,
+      createdAt: new Date(),
+      duePayments: 0 // Initialize with no due payments
+    };
+    
+    this.cards.push(card);
+    
+    // Save to cardsData.json
+    this.saveCardData();
+    
+    return card;
+  }
+
+  async deleteCard(id: number): Promise<boolean> {
+    const initialLength = this.cards.length;
+    this.cards = this.cards.filter(card => card.id !== id);
+    
+    if (this.cards.length !== initialLength) {
+      // Card was deleted, save the updated data
+      this.saveCardData();
+      return true;
+    }
+    
+    return false;
+  }
+
+  async getCardTransactions(cardId: number): Promise<Transaction[]> {
+    // For now, we'll return transactions related to the user who owns the card
+    // In a real implementation, you might want to link cards to accounts more directly
+    try {
+      const card = this.cards.find(c => c.id === cardId);
+      if (!card) {
+        return [];
+      }
+      
+      // Get user's accounts to find related transactions
+      const usersDir = path.join(__dirname, '..', 'data', 'users');
+      if (fs.existsSync(usersDir)) {
+        const userDataPath = path.join(usersDir, `${card.userId}.json`);
+        if (fs.existsSync(userDataPath)) {
+          const userData = JSON.parse(fs.readFileSync(userDataPath, 'utf8'));
+          
+          // Get account IDs for this user
+          const accountIds = userData.accounts?.map((acc: any) => acc.id) || [];
+          
+          // Filter transactions that belong to this user's accounts
+          const userTransactions = userData.transactions || [];
+          const cardTransactions = userTransactions.filter((trans: any) => 
+            accountIds.includes(trans.accountId)
+          );
+          
+          // Calculate due payments based on transactions
+          // For simplicity, we'll consider any debit transactions as potential due payments
+          // In a real implementation, you might want to have specific logic for due payments
+          let dueAmount = 0;
+          cardTransactions.forEach((trans: any) => {
+            if (trans.type === 'debit') {
+              dueAmount += parseFloat(trans.amount) || 0;
+            }
+          });
+          
+          // Update the card's due payments
+          const cardIndex = this.cards.findIndex(c => c.id === cardId);
+          if (cardIndex !== -1) {
+            this.cards[cardIndex].duePayments = dueAmount;
+            // Save the updated card data
+            this.saveCardData();
+          }
+          
+          return cardTransactions;
+        }
+      }
+    } catch (error) {
+      console.error(`Error loading transactions for card ${cardId}:`, error);
+    }
+    
     return [];
   }
 }

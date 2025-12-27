@@ -32,6 +32,11 @@ export async function apiPost<T>(url: string, data?: unknown): Promise<T> {
   return await res.json();
 }
 
+export async function apiPut<T>(url: string, data?: unknown): Promise<T> {
+  const res = await apiRequest('PUT', url, data);
+  return await res.json();
+}
+
 export async function apiPatch<T>(url: string, data?: unknown): Promise<T> {
   const res = await apiRequest('PATCH', url, data);
   return await res.json();

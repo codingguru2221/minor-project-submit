@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api, buildUrl } from "@shared/routes";
 import { useToast } from "@/hooks/use-toast";
-import { apiGet, apiPost, apiPatch } from "@/lib/api";
+import { apiGet, apiPost, apiPatch, apiDelete } from "@/lib/api";
 
 // Define types that would normally come from schema
 interface InsertUser {
@@ -190,13 +190,75 @@ export interface Card {
 
 export function useCards(userId?: number) {
   return useQuery<Card[]>({
-    queryKey: ['cards', userId],
+    queryKey: [api.cards.list.path, userId],
     queryFn: async () => {
       if (!userId) return [];
-      const url = `/api/cards?userId=${userId}`;
+      const url = `${api.cards.list.path}?userId=${userId}`;
       const data = await apiGet(url);
-      return data as Card[];
+      return api.cards.list.responses[200].parse(data);
     },
     enabled: !!userId,
+  });
+}
+
+export function useCreateCard() {
+  const queryClient = useQueryClient();
+  const { toast } = useToast();
+  
+  return useMutation({
+    mutationFn: async (cardData: Omit<Card, 'id' | 'createdAt'>) => {
+      const response = await apiPost(api.cards.create.path, cardData);
+      return api.cards.create.responses[201].parse(response);
+    },
+    onSuccess: () => {
+      // Invalidate and refetch cards
+      queryClient.invalidateQueries({ queryKey: [api.cards.list.path] });
+      toast({ title: "Card Added", description: "Card has been added successfully." });
+    },
+    onError: (error: any) => {
+      toast({ 
+        title: "Error adding card", 
+        description: error.message || "Failed to add card",
+        variant: "destructive" 
+      });
+    },
+  });
+}
+
+export function useDeleteCard() {
+  const queryClient = useQueryClient();
+  const { toast } = useToast();
+  
+  return useMutation({
+    mutationFn: async (id: number) => {
+      const url = buildUrl(api.cards.delete.path, { id });
+      const response = await apiDelete(url);
+      return response;
+    },
+    onSuccess: () => {
+      // Invalidate and refetch cards
+      queryClient.invalidateQueries({ queryKey: [api.cards.list.path] });
+      toast({ title: "Card Deleted", description: "Card has been removed successfully." });
+    },
+    onError: (error: any) => {
+      toast({ 
+        title: "Error deleting card", 
+        description: error.message || "Failed to delete card",
+        variant: "destructive" 
+      });
+    },
+  });
+}
+
+export function useCardTransactions(cardId?: number) {
+  return useQuery({
+    queryKey: [api.cards.transactions.path, cardId],
+    queryFn: async () => {
+      if (!cardId) return [];
+      const url = buildUrl(api.cards.transactions.path, { id: cardId });
+      const data = await apiGet(url);
+      return api.cards.transactions.responses[200].parse(data);
+    },
+    enabled: !!cardId,
   });
 }

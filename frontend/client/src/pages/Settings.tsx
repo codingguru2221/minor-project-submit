@@ -26,8 +26,10 @@ export default function Settings() {
       
       <main className="flex-1 lg:ml-64 p-4 lg:p-8 max-w-[1600px] mx-auto w-full">
         <header className="mb-8">
-          <h1 className="text-3xl font-display font-bold">Settings</h1>
-          <p className="text-muted-foreground">Manage your account preferences</p>
+          <div>
+            <h1 className="text-3xl font-display font-bold">Settings</h1>
+            <p className="text-muted-foreground">Manage your account preferences</p>
+          </div>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
