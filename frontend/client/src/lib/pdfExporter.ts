@@ -17,15 +17,34 @@ interface ExpenseItem {
 export const exportExpensesToPDF = (expenses: ExpenseItem[], fileName: string = 'expense-report.pdf') => {
   const doc = new jsPDF();
 
-  // Add title
-  doc.setFontSize(22);
-  doc.text('Expense Report', 20, 20);
-
-  // Add metadata
-  doc.setFontSize(12);
-  doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 35);
-  doc.text(`Total Expenses: ${expenses.length}`, 20, 45);
+  // Calculate totals
+  const totalExpenses = expenses.length;
+  const totalAmount = expenses.reduce((sum, expense) => {
+    const amount = parseFloat(expense.amount);
+    return isNaN(amount) ? sum : sum + amount;
+  }, 0);
   
+  // Add title
+  doc.setFontSize(24);
+  doc.setTextColor(29, 78, 216); // Blue color
+  doc.text('EXPENSE REPORT', 20, 20);
+  
+  // Add expense type
+  doc.setFontSize(16);
+  doc.setTextColor(31, 41, 55); // Gray-700
+  doc.text('General Expenses', 20, 35);
+  
+  // Add prominent total expense summary
+  doc.setFontSize(18);
+  doc.setTextColor(220, 38, 38); // Red color for emphasis
+  doc.text(`TOTAL: ${expenses[0]?.currency || '$'}${totalAmount.toFixed(2)}`, 20, 50);
+  doc.setTextColor(0, 0, 0); // Reset to black
+  
+  // Add metadata
+  doc.setFontSize(11);
+  doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 65);
+  doc.text(`Total Records: ${totalExpenses}`, 20, 75);
+
   addExpensesTable(doc, expenses);
   
   // Save the PDF
@@ -36,15 +55,34 @@ export const exportExpensesToPDF = (expenses: ExpenseItem[], fileName: string = 
 export const exportCashExpensesToPDF = (expenses: ExpenseItem[], fileName: string = 'cash-expenses-report.pdf') => {
   const doc = new jsPDF();
 
-  // Add title
-  doc.setFontSize(22);
-  doc.text('Cash Expenses Report', 20, 20);
-
-  // Add metadata
-  doc.setFontSize(12);
-  doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 35);
-  doc.text(`Total Cash Expenses: ${expenses.length}`, 20, 45);
+  // Calculate totals
+  const totalExpenses = expenses.length;
+  const totalAmount = expenses.reduce((sum, expense) => {
+    const amount = parseFloat(expense.amount);
+    return isNaN(amount) ? sum : sum + amount;
+  }, 0);
   
+  // Add title
+  doc.setFontSize(24);
+  doc.setTextColor(29, 78, 216); // Blue color
+  doc.text('EXPENSE REPORT', 20, 20);
+  
+  // Add expense type
+  doc.setFontSize(16);
+  doc.setTextColor(31, 41, 55); // Gray-700
+  doc.text('Cash Expenses', 20, 35);
+  
+  // Add prominent total expense summary
+  doc.setFontSize(18);
+  doc.setTextColor(220, 38, 38); // Red color for emphasis
+  doc.text(`TOTAL: ${expenses[0]?.currency || '$'}${totalAmount.toFixed(2)}`, 20, 50);
+  doc.setTextColor(0, 0, 0); // Reset to black
+  
+  // Add metadata
+  doc.setFontSize(11);
+  doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 65);
+  doc.text(`Total Records: ${totalExpenses}`, 20, 75);
+
   addExpensesTable(doc, expenses);
   
   // Save the PDF
@@ -55,15 +93,34 @@ export const exportCashExpensesToPDF = (expenses: ExpenseItem[], fileName: strin
 export const exportMonthlyExpensesToPDF = (expenses: ExpenseItem[], fileName: string = 'monthly-expenses-report.pdf') => {
   const doc = new jsPDF();
 
-  // Add title
-  doc.setFontSize(22);
-  doc.text('Monthly Expenses Report', 20, 20);
-
-  // Add metadata
-  doc.setFontSize(12);
-  doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 35);
-  doc.text(`Total Monthly Expenses: ${expenses.length}`, 20, 45);
+  // Calculate totals
+  const totalExpenses = expenses.length;
+  const totalAmount = expenses.reduce((sum, expense) => {
+    const amount = parseFloat(expense.amount);
+    return isNaN(amount) ? sum : sum + amount;
+  }, 0);
   
+  // Add title
+  doc.setFontSize(24);
+  doc.setTextColor(29, 78, 216); // Blue color
+  doc.text('EXPENSE REPORT', 20, 20);
+  
+  // Add expense type
+  doc.setFontSize(16);
+  doc.setTextColor(31, 41, 55); // Gray-700
+  doc.text('Monthly Expenses', 20, 35);
+  
+  // Add prominent total expense summary
+  doc.setFontSize(18);
+  doc.setTextColor(220, 38, 38); // Red color for emphasis
+  doc.text(`TOTAL: ${expenses[0]?.currency || '$'}${totalAmount.toFixed(2)}`, 20, 50);
+  doc.setTextColor(0, 0, 0); // Reset to black
+  
+  // Add metadata
+  doc.setFontSize(11);
+  doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 65);
+  doc.text(`Total Records: ${totalExpenses}`, 20, 75);
+
   addExpensesTable(doc, expenses);
   
   // Save the PDF
@@ -74,15 +131,34 @@ export const exportMonthlyExpensesToPDF = (expenses: ExpenseItem[], fileName: st
 export const exportLoanExpensesToPDF = (expenses: ExpenseItem[], fileName: string = 'loan-expenses-report.pdf') => {
   const doc = new jsPDF();
 
-  // Add title
-  doc.setFontSize(22);
-  doc.text('Loan Expenses Report', 20, 20);
-
-  // Add metadata
-  doc.setFontSize(12);
-  doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 35);
-  doc.text(`Total Loan Expenses: ${expenses.length}`, 20, 45);
+  // Calculate totals
+  const totalExpenses = expenses.length;
+  const totalAmount = expenses.reduce((sum, expense) => {
+    const amount = parseFloat(expense.amount);
+    return isNaN(amount) ? sum : sum + amount;
+  }, 0);
   
+  // Add title
+  doc.setFontSize(24);
+  doc.setTextColor(29, 78, 216); // Blue color
+  doc.text('EXPENSE REPORT', 20, 20);
+  
+  // Add expense type
+  doc.setFontSize(16);
+  doc.setTextColor(31, 41, 55); // Gray-700
+  doc.text('Loan Expenses', 20, 35);
+  
+  // Add prominent total expense summary
+  doc.setFontSize(18);
+  doc.setTextColor(220, 38, 38); // Red color for emphasis
+  doc.text(`TOTAL: ${expenses[0]?.currency || '$'}${totalAmount.toFixed(2)}`, 20, 50);
+  doc.setTextColor(0, 0, 0); // Reset to black
+  
+  // Add metadata
+  doc.setFontSize(11);
+  doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 65);
+  doc.text(`Total Records: ${totalExpenses}`, 20, 75);
+
   addExpensesTable(doc, expenses);
   
   // Save the PDF
@@ -92,20 +168,21 @@ export const exportLoanExpensesToPDF = (expenses: ExpenseItem[], fileName: strin
 // Helper function to add expenses table to PDF
 const addExpensesTable = (doc: any, expenses: ExpenseItem[]) => {
   // Prepare table data
-  const tableColumn = ["#", "Date & Time", "Amount", "Category", "Payment Type"];
+  const tableColumn = ["#", "Description", "Amount", "Date", "Category"];
   const tableRows: any[][] = [];
 
   expenses.forEach((expense, index) => {
-    const paymentType = expense.isOffline ? 'Cash' : (expense.type === 'debit' ? 'Online' : 'Online');
-    const dateStr = new Date(expense.date).toLocaleString();
+    const description = (expense.description || expense.category || 'N/A').toString();
+    const dateStr = new Date(expense.date).toLocaleDateString();
     const amountStr = `${expense.currency || '$'}${expense.amount}`;
+    const category = expense.category || 'Uncategorized';
     
     const rowData = [
       index + 1,
-      dateStr,
+      description,
       amountStr,
-      (expense.category || expense.description || 'N/A').toString(),
-      paymentType
+      dateStr,
+      category
     ];
     
     tableRows.push(rowData);
@@ -120,7 +197,7 @@ const addExpensesTable = (doc: any, expenses: ExpenseItem[]) => {
   doc.autoTable({
     head: [tableColumn],
     body: tableRows,
-    startY: 60,
+    startY: 85, // Adjusted to account for the new header layout
     styles: {
       fontSize: 10,
     },
@@ -137,21 +214,12 @@ const addExpensesTable = (doc: any, expenses: ExpenseItem[]) => {
   doc.setFontSize(14);
   doc.text('Summary', 20, finalY + 10);
 
-  // Calculate totals
-  const totalExpenses = expenses.length;
-  const totalAmount = expenses.reduce((sum, expense) => {
-    const amount = parseFloat(expense.amount);
-    return isNaN(amount) ? sum : sum + amount;
-  }, 0);
-
   const onlineExpenses = expenses.filter(e => !e.isOffline && e.type !== 'credit').length;
   const cashExpenses = expenses.filter(e => e.isOffline).length;
 
   doc.setFontSize(12);
-  doc.text(`Total Expenses: ${totalExpenses}`, 20, finalY + 20);
-  doc.text(`Total Amount: ${expenses[0]?.currency || '$'}${totalAmount.toFixed(2)}`, 20, finalY + 30);
-  doc.text(`Online Expenses: ${onlineExpenses}`, 20, finalY + 40);
-  doc.text(`Cash Expenses: ${cashExpenses}`, 20, finalY + 50);
+  doc.text(`Online Expenses: ${onlineExpenses}`, 20, finalY + 20);
+  doc.text(`Cash Expenses: ${cashExpenses}`, 20, finalY + 30);
 };
 
 export default exportExpensesToPDF;
